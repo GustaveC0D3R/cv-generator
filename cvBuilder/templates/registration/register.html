@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'assets/css/signup.css' %}">
+</head>
+<body>
+    <a href = "index.html" class = "navbar-brand">
+        <img src = "{% static 'assets/images/curriculum-vitae.png' %}" alt = "" class = "navbar-brand-icon">
+        <span class = "navbar-brand-text">build <span>resume.</span>
+    </a>
+    <h1>User Registration</h2>
+    <!-- <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Username:</p>
+        <input type="text" id="username" name="username" required autofocus>
+        <p>Password:</p>
+        <input type="password" type="password" id="password" name="password" required>
+
+        <button type="submit">Register</button>
+    </form> -->
+    <form method="post" action="{% url 'register' %}" id="registration-form" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            <input type="text" id="id_username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="id_password">Password:</label>
+            <input type="password" id="id_password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="id_password_confirm">Confirm Password:</label>
+            <input type="password" id="id_password_confirm" name="password_confirm" required>
+            <span id="password-error" style="color: red;"></span>
+        </div>
+        <div class="submit-btn-container">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+    <p>Already registered? <a href="{% url 'login' %}">Log in</a></p>
+
+    <script src = "{% static 'assets/js/form.js' %}"></script>
+</body>
+</html>

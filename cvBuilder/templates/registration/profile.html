@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>Welcome to Your Profile</h1>
+    <p>This is your user profile page.</p>
+    <p>You can customize this page to display user-specific information.</p>
+    <p>For example, you can show the user's username, email, or any other relevant details.</p>
+
+    <!-- Example: Displaying user's username -->
+    <p>Username: {{ user.username }}</p>
+
+    <!-- Example: Displaying user's email (if available) -->
+    {% if user.email %}
+        <p>Email: {{ user.email }}</p>
+    {% else %}
+        <p>Email not provided</p>
+    {% endif %}
+
+    <!-- Add more user-specific information here as needed -->
+
+    <!-- Add logout button -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

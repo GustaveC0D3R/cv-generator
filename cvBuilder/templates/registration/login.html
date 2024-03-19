@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+</head>
+<body>
+    <a href = "index.html" class = "navbar-brand">
+        <img src = "{% static 'assets/images/curriculum-vitae.png' %}" alt = "" class = "navbar-brand-icon">
+        <span class = "navbar-brand-text">build <span>resume.</span>
+    </a>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>User Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <p>Username:</p>
+            <input type="text" id="username" name="username" required autofocus>
+        </div>
+        <div>
+            <p>Password:</p>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="submit-btn-container">
+            <button type="submit">Login</button>
+        </div>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+</body>
+</html>
